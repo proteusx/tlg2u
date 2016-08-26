@@ -36,7 +36,7 @@ through which the user can select authors and works from a list.
 COMPILING
 --------- 
 
-tlg2u is written in C and to compile it you need `<GNU Make
+tlg2u is written in C and to compile it you need `GNU Make
 <https://www.gnu.org/software/make/>`_ and the `GCC <https://gcc.gnu.org/>`_
 compiler.  If compiling for Micro$oft Windows you will need the `MinGW GCC
 <http://www.mingw.org/>`_ compiler instead. `Groff
@@ -65,7 +65,7 @@ documentation.
 EXAMPLES OF USAGE
 -----------------
 
-The following examples assume that you have access to the TLG CDROM through the directory ``./cdroms/tlg``
+The following examples assume that you have access to the CD-ROMs through the directory ``./cdroms/``
 
 ``tlg2u -a 0012 -b 001 -c tlg -d ./cdroms/tlge > Iliad.utf``
 
