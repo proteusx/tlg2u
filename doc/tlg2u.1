@@ -1,0 +1,233 @@
+'\" t
+.\"     Title: tlg2u
+.\"    Author: [proteuss@sdf.lonestar.org]
+.\" Generator: DocBook XSL Stylesheets v1.76.1 <http://docbook.sf.net/>
+.\"      Date: 03/05/2011
+.\"    Manual: User Commands
+.\"    Source: tlg2u 1.0.0
+.\"  Language: English
+.\"
+.TH "TLG2U" "1" "03/05/2011" "tlg2u 1\&.0\&.0" "User Commands"
+.\" -----------------------------------------------------------------
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+tlg2u \- Decode beta coded text to Unicode (utf\-8) and print to the standard output
+.SH "SYNOPSIS"
+.sp
+\fBtlg2u\fR [\fIOPTIONS\fR] \fIFILE\fR
+.SH "DESCRIPTION"
+.sp
+The \fBtlg2gu\fR(1) command converts beta coded texts, from the Thesaurus Lingua Graeca (TLG) and the Packard Humanities Institute (PHI5/7) corpora in CD\-ROM, to utf\-8 encoded text and prints to the standard output\&. It can convert whole files when giving a filename or single texts by specifying the corpus, the author id and the work id\&.
+.SH "OPTIONS"
+.sp
+If \fIFILE\fR is specified then options \fB\-a\fR, \fB\-b\fR, \fB\-B\fR and \fB\-d\fR are ignored and the whole file is converted\&.
+.PP
+\fB\-a\fR \fInnnn\fR
+.RS 4
+Author, 4 digit id code\&.
+.RE
+.PP
+\fB\-b\fR \fInnn\fR
+.RS 4
+Book, 3 digit id code\&.
+.RE
+.PP
+\fB\-c\fR corpus_id
+.RS 4
+Must be one of: tlg, lat, civ, ddp, ins or chr\&.
+.RE
+.PP
+\fB\-C\fR
+.RS 4
+Print all citation numbers on the left margin\&.
+.RE
+.PP
+\fB\-d\fR <path to corpus files>
+.RS 4
+Corpus directory path\&. e\&.g\&. /usr/cdroms/tlg\&.
+.RE
+.PP
+\fB\-G\fR
+.RS 4
+Greek text (default)\&. Specify this if text is mainly Greek\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print usage information\&.
+.RE
+.PP
+\fB\-l\fR
+.RS 4
+Print line numbers on the right margin\&. (Every fith line)\&.
+.RE
+.PP
+\fB\-L\fR
+.RS 4
+Latin text\&. Specify this if text is mainly latin\&. Use this option for the Latin corpus (lat), canon files (doccan) or author tables (authtab\&.dir)\&.
+.RE
+.PP
+\fB\-m\fR
+.RS 4
+Print marginalia on the right margin\&.
+.RE
+.PP
+\fB\-m\fR
+.RS 4
+Print marginalia on the right margin\&.
+.RE
+.PP
+\fB\-P\fR
+.RS 4
+Print paragraph numbers on the left margin
+.RE
+.SH "OTHER OPTIONS"
+.sp
+These options are meant to be used when the program is called from a script, probably in conjunction with a specially prepared canon\&. Details for each book such as the block number, the text width etc\&., are stored in the canon\&. To build canons for each corpus you need to process the files authtab\&.dir, doccan files and \&.idt files\&. \fItlg2u\fR can be used to construct canons (see option \fB\-n\fR)\&.
+.PP
+\fB\-B\fR <block_number>
+.RS 4
+TLG files are divided into 8Kb blocks\&. This option specifies the block number of the \&.txt file where the book to be converted begins\&. If not given it defaults to the value \-1 and the program then will search the \&.idt file to find the block number\&. Normally this number will be read from a canon file containing such details\&. If this number is given it speeds up processing, especially for authors with large numbers of works\&. See also
+read_idt\&.c
+and
+find_bloc\&.c
+.RE
+.PP
+\fB\-M\fR <width>
+.RS 4
+Marginalia maximum text width in characters\&. Relevant only to utf output\&. pdf output does not need this option\&. If not given it will do one extra pass to find it\&. Normally this is retrieved from canon file\&.
+.RE
+.PP
+\fB\-n\fR
+.RS 4
+Print only the text width, marginalia width and line count\&. Used only for building canons\&.
+.RE
+.PP
+\fB\-p\fR
+.RS 4
+Pdf document output\&. Prints LaTeX markups used by XeTeX to typeset the text\&. You need to append appropriate preamble and postamble before passing this output through xelatex\&.
+.RE
+.PP
+.RS 4
+The markups are as follows:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Each output line is given a formate suitable for the xtabular environment and can be easily changed by editing the code found at the end of
+printing\&.c\&. The format of the output lines is as follows:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+citations  &  main_text  &  line_numbers  &  marginalia
+.fi
+.if n \{\
+.RE
+.\}
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Titles and other distinctive texts are rendered in bold, i\&.e\&. enclosed in
+{\ebf \&.\&.\&.}\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Language shifts are indicated by the markups:
+\egreek{}
+and
+\elatin{}\&. In your preamble you should have definitions specifying the fonts, for example:
+\enewfontfamily\elatin{Times New Roman}
+and
+\enewfontfamily\egreek{Minion Pro}
+.RE
+.RE
+.PP
+\fB\-T\fR <width>
+.RS 4
+Main text maximum width in characters\&. See also option
+\fB\-M\fR
+.RE
+.PP
+\fB\-u\fR
+.RS 4
+Print only utf\-8 text without any LaTeX markups\&. This is the default\&.
+.RE
+.SH "EXAMPLES"
+.PP
+tlg2u \-L doccan2\&.txt
+.RS 4
+Translate the TLG canon to unicode file\&. The \-L option is set because the canon contains mainly Latin text\&. The few titles in Greek are indicated in the source file by language change marks and so will be printed correctly\&.
+.RE
+.PP
+tlg2u \-a 0012 \-b 001 \-c tlg \-d \&./cdroms/tlge > Iliad\&.utf
+.RS 4
+Convert Homer\(cqs
+\fIIliad\fR
+to utf\-8 encoded text (the default)\&. Homer has author id: 0012 and the Iliad has book id: 001\&. The path of the input file is
+\&./cdroms/tlge/tlg0012\&.txt\&. The results are sent to the file
+Iliad\&.utf
+which can be viewed with Open Office Writer or any other unicode capable editor/word processor\&.
+.RE
+.PP
+tlg2u \-a 0448 \-b 001 \-L \-C \-c lat \-d \&./cdroms/phi5 > DeBello\&.txt
+.RS 4
+Convert Caesar\(cqs
+\fIDe Bello Galico\fR
+to utf\-8\&. Append all citation numbers on the left margin\&. The input file is
+\&./cdroms/phi5/lat0448\&.txt\&.
+.RE
+.PP
+tlg2u \-a 0016 \-b 001 \-P \-l \-c tlg \-d \&./cdroms/phi5 > herod_hist\&.txt
+.RS 4
+Convert Herodotus\*(Aq
+\fIHistoriae\fR, append section numbers to the left margin and line numbers to the right margin\&. The input file is
+\&./cdroms/tlge/tlg0448\&.txt\&.
+.RE
+.SH "BUGS"
+.sp
+Report bugs to: proteuss at sdf\&.lonestar\&.org
+.SH "ACKNOWLEDGMENT"
+.sp
+This utility has drawn upon ideas from the program tlgu by Dimitri Marinakis, see:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+http://tlgu\&.carmen\&.gr
+.fi
+.if n \{\
+.RE
+.\}

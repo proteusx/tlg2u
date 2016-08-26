@@ -1,0 +1,157 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	Development	//
+ACCENT	./beta_code.h	17;"	d
+ACUTE	./beta_code.h	4;"	d
+ARKOPA	./beta_code.h	12;"	d
+AUTHOR_CODE	./tlg.h	36;"	d
+Alpha	./beta_code.h	/^unsigned int Alpha[] = {$/;"	v
+BLOCKSIZE	./tlg.h	14;"	d
+BOLD	./tlg.h	28;"	d
+BOOK	./tlg.h	37;"	d
+CANON	./tlg.h	19;"	d
+CARET	./beta_code.h	5;"	d
+CORPUS	./tlg.h	34;"	d
+Epsilon	./beta_code.h	/^ unsigned int Epsilon[] = {$/;"	v
+Eta	./beta_code.h	/^unsigned int Eta[] = {$/;"	v
+GRAVE	./beta_code.h	3;"	d
+GREEK	./tlg.h	17;"	d
+GREEK_FONT	./tlg.h	29;"	d
+GREEK_UPPER	./beta_code.h	16;"	d
+Iota	./beta_code.h	/^ unsigned int Iota[] = {$/;"	v
+KOPA	./beta_code.h	10;"	d
+LATIN	./tlg.h	18;"	d
+LATIN_FONT	./tlg.h	30;"	d
+LINESIZE	./tlg.h	15;"	d
+M00000111	./output_utf.h	9;"	d
+M00001111	./output_utf.h	6;"	d
+M00011111	./output_utf.h	3;"	d
+M00111111	./output_utf.h	13;"	d
+M10000000	./output_utf.h	12;"	d
+M11000000	./output_utf.h	4;"	d
+M11100000	./output_utf.h	7;"	d
+M11110000	./output_utf.h	10;"	d
+MARGINSIZE	./tlg.h	16;"	d
+MAXIDTSIZE	./find_block.c	15;"	d	file:
+MAXNUMBERS	./get_num.c	11;"	d	file:
+MAX_BRACKET	./escape_codes.h	266;"	d
+MAX_PUNCTUATION	./escape_codes.h	17;"	d
+MAX_QUASI_BRACKET	./escape_codes.h	296;"	d
+MAX_QUOTATION	./escape_codes.h	242;"	d
+MAX_TEXT_MARKUP	./escape_codes.h	330;"	d
+MAX_TEXT_SYMBOLS	./escape_codes.h	49;"	d
+NO	./tlg.h	23;"	d
+OFF	./tlg.h	25;"	d
+ON	./tlg.h	24;"	d
+Omega	./beta_code.h	/^unsigned int Omega[] = {$/;"	v
+Omicron	./beta_code.h	/^ unsigned int Omicron[] = {$/;"	v
+PDF	./tlg.h	21;"	d
+Rho	./beta_code.h	/^unsigned int Rho[] = {$/;"	v
+SAMPI	./beta_code.h	13;"	d
+SIGFINAL	./beta_code.h	19;"	d
+SIGFINAL	./which_sigma.c	11;"	d	file:
+SIGMEDIAL	./beta_code.h	18;"	d
+SIGMEDIAL	./which_sigma.c	10;"	d	file:
+SMALL_SCRIPT	./tlg.h	31;"	d
+STIGMA	./beta_code.h	11;"	d
+TXT_DIR	./tlg.h	35;"	d
+UMLAUT	./beta_code.h	2;"	d
+UTF	./tlg.h	20;"	d
+VERSION	./tlg.h	13;"	d
+YES	./tlg.h	22;"	d
+Ypsilon	./beta_code.h	/^ unsigned int Ypsilon[] = {$/;"	v
+accents	./tlg.h	/^int accents;                            \/* encoded accents *\/$/;"	v
+acitation	./tlg.h	/^char acitation[52][32];              \/* Ascii part (text) of citation *\/$/;"	v
+alpha	./beta_code.h	/^unsigned int alpha[] = {$/;"	v
+author_code	./tlg.h	/^char author_code[5];                         \/* author code number string *\/$/;"	v
+before_accents	./beta_code.c	/^char *before_accents = ")(\/\\\\=";$/;"	v
+beta_code	./beta_code.c	/^int beta_code()$/;"	f
+betastate	./tlg.h	/^int default_betastate, betastate;            \/* default GREEK *\/$/;"	v
+bold_flag	./tlg.h	/^int bold_flag;                    \/* bold sequence flag, checks for$/;"	v
+book	./tlg.c	/^int book;                                       \/* required book number *\/$/;"	v
+book	./tlg.h	/^int book;                                    \/* required book number *\/$/;"	v
+bracket_close_symbol	./escape_codes.h	/^unsigned int bracket_close_symbol[] = {$/;"	v
+bracket_open	./escape_codes.h	/^unsigned int bracket_open[MAX_BRACKET];$/;"	v
+bracket_open_symbol	./escape_codes.h	/^unsigned int bracket_open_symbol[] = {$/;"	v
+char_tmp	./beta_code.c	/^char char_tmp;$/;"	v
+citations	./tlg.h	/^int citations;                               \/* emit citation numbers *\/$/;"	v
+convert	./convert.c	/^void convert()$/;"	f
+corpus	./tlg.h	/^char corpus[5];                              \/* tlg, tll, etc *\/$/;"	v
+default_betastate	./tlg.h	/^int default_betastate, betastate;            \/* default GREEK *\/$/;"	v
+document	./tlg.h	/^int document;                                \/* utf or pdf *\/$/;"	v
+epsilon	./beta_code.h	/^unsigned int epsilon[] = {$/;"	v
+error_msg	./tlg.h	/^char error_msg[253];                \/* Error return message text *\/$/;"	v
+error_return	./macros.h	4;"	d
+escape_codes	./beta_code.c	/^char *escape_codes = "$&%\\"@#^[]<>{}";$/;"	v
+eta	./beta_code.h	/^unsigned int eta[] = {$/;"	v
+find_block	./find_block.c	/^int find_block ( char *idt_file, int book )$/;"	f
+get_accents	./accents.c	/^int get_accents(void)$/;"	f
+getnum	./get_num.c	/^ int getnum(void)$/;"	f
+greek	./beta_code.h	/^unsigned int greek[] = {$/;"	v
+greek_accents	./accents.c	/^char *greek_accents = ")(+\/\\\\=|";$/;"	v
+handle_escape_codes	./escape_codes.c	/^void handle_escape_codes(unsigned char beta, int number)$/;"	f
+hypo_vowels	./beta_code.c	/^char *hypo_vowels ="AHWUI";   \/* vowels that take ypogegrammeni or dialytika *\/$/;"	v
+i	./tlg.h	/^int i, j, k;                              \/* sandries variables *\/$/;"	v
+icitation	./tlg.h	/^int  icitation[52];                  \/* integer part of citation *\/$/;"	v
+id_char	./id_code.c	/^int id_char;	\/* holds the pointer for the ascii part of the ID arrays *\/$/;"	v
+id_code	./id_code.c	/^int id_code()$/;"	f
+id_command	./id_code.c	/^int id_command;	\/* holds the current instruction for ID handling *\/$/;"	v
+id_level	./id_code.c	/^int id_level;	\/* holds translated current id level as an index to ID arrays *\/$/;"	v
+id_process	./id_code.c	/^int id_process;	\/* if non-zero, command must be processed *\/$/;"	v
+idt_file	./tlg.c	/^char txt_file[256], idt_file[256];              \/* filename strings *\/$/;"	v
+input_buffer	./tlg.h	/^unsigned char input_buffer[BLOCKSIZE];       \/* 8k input data buffer*\/$/;"	v
+iota	./beta_code.h	/^unsigned int iota[] = {$/;"	v
+j	./tlg.h	/^int i, j, k;                              \/* sandries variables *\/$/;"	v
+k	./tlg.h	/^int i, j, k;                              \/* sandries variables *\/$/;"	v
+latin_accents	./accents.c	/^char *latin_accents = "+\/\\\\=|";$/;"	v
+lines	./tlg.h	/^int lines;                                   \/* Line numbers in margin *\/$/;"	v
+lines_count	./tlg.h	/^long int lines_count;$/;"	v
+main	./tlg.c	/^int main (int argc, char *argv[])$/;"	f
+margin	./tlg.h	/^unsigned char margin[MARGINSIZE];           \/* margin text *\/$/;"	v
+margin_flag	./tlg.h	/^int margin_flag;                   \/* used with test markups.$/;"	v
+margin_pos	./tlg.h	/^int text_pos, margin_pos;               \/* line & margin byte positions *\/$/;"	v
+margin_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count; $/;"	v
+marginalia	./tlg.h	/^int marginalia;                              \/* emit marginalia *\/$/;"	v
+max_margin	./tlg.h	/^int max_margin, max_text;          $/;"	v
+max_text	./tlg.h	/^int max_margin, max_text;          $/;"	v
+no_chars	./macros.h	41;"	d
+omega	./beta_code.h	/^unsigned int omega[] = {$/;"	v
+omicron	./beta_code.h	/^unsigned int omicron[] = {$/;"	v
+output_utf	./output_utf.c	/^void output_utf(unsigned long ucode)$/;"	f
+par_tmp	./tlg.h	/^char par_tmp[100];                           \/* Temp variable *\/$/;"	v
+paragraphs	./tlg.h	/^int paragraphs;                              \/* Paras in left margin *\/$/;"	v
+pass	./tlg.h	/^int pass;$/;"	v
+pos	./tlg.h	/^int pos;                                     \/* input buffer possition *\/$/;"	v
+print_line	./printing.c	/^void print_line()$/;"	f
+punctuation	./escape_codes.h	/^unsigned int punctuation[] = {$/;"	v
+punctuation_codes	./which_sigma.c	/^char *punctuation_codes = " .,:;_\\"%{}$&";	\/* used by which_sigma *\/$/;"	v
+quasi_bracket_close_symbol	./escape_codes.h	/^unsigned int quasi_bracket_close_symbol[] = {$/;"	v
+quasi_bracket_open	./escape_codes.h	/^unsigned int quasi_bracket_open[MAX_QUASI_BRACKET];$/;"	v
+quasi_bracket_open_symbol	./escape_codes.h	/^unsigned int quasi_bracket_open_symbol[] = {$/;"	v
+quotation_close_symbol	./escape_codes.h	/^unsigned int quotation_close_symbol[] = {$/;"	v
+quotation_open	./escape_codes.h	/^unsigned int quotation_open[MAX_QUOTATION]; \/* used to keep track of quotation pairs *\/$/;"	v
+quotation_open_symbol	./escape_codes.h	/^unsigned int quotation_open_symbol[] = {$/;"	v
+read14bit	./macros.h	20;"	d
+read7bit	./macros.h	17;"	d
+read_char	./macros.h	25;"	d
+read_string	./macros.h	30;"	d
+rho	./beta_code.h	/^unsigned int rho[] = {$/;"	v
+start_block	./tlg.h	/^int start_block;                             \/* First block to read from *\/ $/;"	v
+store_accents	./macros.h	54;"	d
+text	./tlg.h	/^unsigned char text[LINESIZE];               \/* main text *\/$/;"	v
+text_dir	./tlg.h	/^char text_dir[253];                          \/* the tlg files directory *\/$/;"	v
+text_markup	./escape_codes.h	/^unsigned int text_markup[] = $/;"	v
+text_pos	./tlg.h	/^int text_pos, margin_pos;               \/* line & margin byte positions *\/$/;"	v
+text_symbols	./escape_codes.h	/^unsigned int text_symbols[] = {$/;"	v
+text_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count; $/;"	v
+txt_file	./tlg.c	/^char txt_file[256], idt_file[256];              \/* filename strings *\/$/;"	v
+txt_handle	./tlg.h	/^int txt_handle;                              \/* text file handle *\/$/;"	v
+usage_info	./usage_info.h	/^void usage_info(void)$/;"	f
+utf_string	./macros.h	10;"	d
+vowels	./beta_code.c	/^char *vowels = "AEHIOUWR";                         \/* Rho is a vowel! *\/$/;"	v
+which_sigma	./which_sigma.c	/^int which_sigma(int nextptr)$/;"	f
+xucode	./escape_codes.h	/^unsigned long xucode;    \/* Temp unicode symbol holder *\/$/;"	v
+ypsilon	./beta_code.h	/^unsigned int ypsilon[] = {$/;"	v
