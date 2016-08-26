@@ -288,10 +288,15 @@ unsigned int bracket_close_symbol[] = {
   0X002F,  0X002F,  0X2E21,  0X2E20,  0X2E27,  0X2E29,
 	};
 
-/* Quasi-Brackets (< ) 0 - 100  Text formating */
-/* FIXME formating should be done by latex. may
- * be leave the as they are and handle by perl.
- * be combined with every letter
+/* Quasi-Brackets (< ) 0 - 100  are text formating codes.
+ *  e.g. sub/super script text, under/overline text, etc. 
+ *  
+ * FIXME 
+ * For the time being enclose such text in angle brackets
+ * and later, if needed, apply formating manually.
+ * Formating should be done by LaTeX. Maybe
+ * leave them as they are and handle externally by perl.
+ * 
  */
 #define MAX_QUASI_BRACKET 101
 unsigned int quasi_bracket_open[MAX_QUASI_BRACKET];
@@ -322,17 +327,16 @@ unsigned int quasi_bracket_close_symbol[] = {
 	0X003E,
 	};
 
-/* ----------------------------------
- * Texttual Mark-Up ({) 0 - 94 
- * 0: braketed text in situ
- * 1: text in margin 
- * ----------------------------------*/
 #define MAX_TEXT_MARKUP 95
 /* int margin_flag = 0;   Defined in tlg.h start with the margin flag reset */
 /* -------------------------------------------------------------------------------
+ * Texttual Mark-Up ({) 0 - 94 
+ * The table below is not of unicode chars
+ * each entry indicates what to do for each {n code:
+ * 0 = enclose text in {}
  * 1 = marginalia: Text goes to margin
- * 2 = Title: Bold font.
- * 3 = Stage direction, speaker designation etc bold in { }
+ * 2 = Title: render in Bold font
+ * 3 = Stage direction, speaker designation etc.  {bold text}
  * -------------------------------------------------------------------------------*/
 unsigned int text_markup[] = 
 {

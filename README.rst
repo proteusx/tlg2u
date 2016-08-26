@@ -28,6 +28,10 @@ To use tlg2u you will need to have the CD-ROMs containing the text corpora.
 As far as I know these are no longer sold but they are easily found via bit
 torrent.  
 
+Optionally tlg2u can emit text with Latex markups (option -p).  You need to
+add appropriate preamble and postamble before passing this output through
+`XeLaTex <https://tug.org/xetex/>`_ to produce a pdf document.
+
 Although tlg2u can be easily used as a standalone utility, it is
 meant to be used in conjunction other commands or with a GUI utility
 through which the user can select authors and works from a list.
@@ -107,11 +111,17 @@ documentation directory distributed with the source code.
 
 NOTE
 ----
-Texts extracted with tlg2u can be edited easily with the `Vim editor
-<http://www.vim.org/>`_ and the
-`polytonic Greek keymap <http://www.vim.org/scripts/script.php?script_id=2743>`_.
+
+Texts extracted with tlg2u can be edited with a polytonic typing aid like `Palamedes
+<https://github.com/proteusx/Palamedes>`_ (Windows only) or with the `Vim editor
+<http://www.vim.org/>`_ and the `polytonic Greek keymap
+<http://www.vim.org/scripts/script.php?script_id=2743>`_.
+There is also the Microsoft Greek polytonic keymap but it is
+counterintuitive and awkward to use.  
 Also  have a look at the polytonic Greek `spell checker
-<http://www.vim.org/scripts/script.php?script_id=2743>`_ for Vim.
+<http://www.vim.org/scripts/script.php?script_id=2743>`_ for Vim. This
+spell checker covers the complete vocabulary from Homeric through to
+modern Greek.
 
 
 SEE ALSO

@@ -25,7 +25,7 @@ void usage_info(void)
 	printf("tlg2u: -L -- Latin Text.\n");
 	printf("tlg2u: -G -- Greek Text.  (default)\n");
 	printf("tlg2u: -u -- utf-8 output (default)\n");
-	printf("tlg2u: -p -- pdf output. (Include latex markups to be used by xelatex -> pfd)\n");
+	printf("tlg2u: -p -- pdf output. (Include LaTeX markups to be used by XeLaTeX -> pdf)\n");
 	printf("tlg2u: -n -- Print only maintext_width, marginalia_width, lines_count. \n");
   printf("tlg2u:               (used for building canons).\n\n");
 	printf("tlg2u: -h -- Print usage information\n");

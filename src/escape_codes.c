@@ -4,7 +4,7 @@
  *  Description:  Formatting and characters represented by beta 
  *                escape codes: $&%@#^[]<>{} etc.
  *                Input: escape code, optional number (eg: #123)
- *                Changes: pos, and via output_utf:
+ *                Changes: pos, and when output_utf() is called:
  *                         text_pos, margin_pos, text and margin. 
  * ==========================================================================
  */
@@ -32,7 +32,7 @@ void handle_escape_codes(unsigned char beta, int number)
                  if (document == PDF) 
                  {
                    int found = 1;
-                   switch (number) /* escape special Tex chars */
+                   switch (number)                /* escape special TeX chars */
                    {
                      case 5: utf_string("$|$"); break;
                      case 9:   utf_string("\\&"); break;        
@@ -50,7 +50,7 @@ void handle_escape_codes(unsigned char beta, int number)
                }
                break;
 
-		case '#':  if (number < MAX_TEXT_SYMBOLS)    /* text symbols */
+		case '#':  if (number < MAX_TEXT_SYMBOLS)                  /* text symbols */
                { 
                   xucode = text_symbols[number];
                   if ((xucode == 0x0023) && (document == PDF))  /* escape '#' */
@@ -78,7 +78,7 @@ void handle_escape_codes(unsigned char beta, int number)
                     * and count opening and closing */
                  {
                     if((input_buffer[pos] == 0x20) 
-                        || 
+                                   || 
                         (quotation_open[number] == 1)) 
                     {
                       output_utf(quotation_close_symbol[number]);
@@ -145,7 +145,7 @@ void handle_escape_codes(unsigned char beta, int number)
                     if ( ((number == 20 )|| (number == 9 ))
                                          && 
                                 (bold_flag == OFF) ) /* if not bold already */  
-                      /* Expanded text -> bold (with with no '<'), (eg. Suda) */
+                      /* Expanded text -> bold (with no '<'), (eg. Suda) */
                     {
                       /* do not print bracket, just turn on the bold */
                       bold_flag = ON;      /* signal bold open */
@@ -187,7 +187,7 @@ void handle_escape_codes(unsigned char beta, int number)
                 break;
 
 		case '{':   if (number < MAX_TEXT_MARKUP) 
-                /* FIXME Reconsider with Xetex */  
+                /* FIXME Reconsider with XeTeX */  
                 {
                   if (text_markup[number] == 1 ) /* start marginalia */
                   {

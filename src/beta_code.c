@@ -59,11 +59,11 @@ int beta_code()
           if (betastate == GREEK && betachar == '*')  
           {
              /* -------------------------------------------
-             * Ypogegrammeni and dialytika are after 
-             * the capital (poustiko!!!)
-             * If any found swap its position with the letter
-             * so that all accents are  before the letter and 
-             * get_accents() can find them.
+             * Ypogegrammeni or dialytika come after 
+             * the capital letter
+             * If any found, swap its position with the letter
+             * so that all accents are  before the letter so 
+             * that get_accents() can find them.
              * -------------------------------------------*/
             for(i=0; i <= 2; i++) 
             {
@@ -87,9 +87,9 @@ int beta_code()
                       } 
                     else {break;} /* not relevant, stop searching */
             }/* end for */
-            no_of_accents = get_accents();  /* In caps accents before letter */
+            no_of_accents = get_accents();  /* For caps accents come before the letter */
             betachar = input_buffer[pos++];
-            /* Dont waste time unless a vowel and has accents */
+            /* Don't waste time unless it is a vowel and has accents */
             if ( strchr(vowels, betachar) && no_of_accents ) 
             {
               switch (betachar) 
@@ -115,7 +115,7 @@ int beta_code()
               {
                 if (betachar == '#')  /* Capital special symbols. eg capital koppa */
                 {
-                  esc_num = getnum();           /* the number that follows */
+                  esc_num = getnum();           /* The number that follows # */
                   switch (esc_num)              /* only four posibilities */
                   {
                     case 1: outchar = KOPA;    break;
@@ -150,8 +150,8 @@ int beta_code()
                   case 2:   outchar = SIGFINAL; break;
                   /* S3 (lunate sigma) is not used.
                    * EDIT: It is used in Galenus 0057_91
-                   * in this treat as an ordinary sigma
-                   * and let which_sigma decide if it meant 
+                   * handle it as an ordinary sigma
+                   * and let which_sigma() decide if it meant 
                    * to be medial of final
                    */          
                   case 3:   outchar = which_sigma(pos); break;
@@ -162,7 +162,7 @@ int beta_code()
               {
                 /* accents follow letter. 
                  * Do not waste time unless 
-                 * it is vowel with accents */
+                 * it is a vowel with accents */
                 if ( strchr(vowels, betachar) && get_accents() ) 
                 {
                   switch (betachar) 
@@ -183,8 +183,8 @@ int beta_code()
                 }
               } /* end else other lc greek */
             } /* end if isalpha GREEK */
-                                   /* not greek letter */
             else if ( (betastate == LATIN) && isalpha(betachar) && get_accents()) 
+              /*  not a greek letter */
             {
               /*----------------------------------------------------
               *   Latin Only
@@ -218,8 +218,8 @@ int beta_code()
                   /* This apostrofos is recomended by Beta Code manual
                    * but is incopadible with vim keymap, spell checkers
                    * and kadmos 
-                   * Better use coronis = 0x1fbd
                    * case '\'': outchar = 0x2019;break;      
+                   * Better use coronis = 0x1fbd
                   */
                   case '\'': outchar = 0x1fbd;break;      /* apostrofos */
                // case '?':  outchar = 0x0323;break;      /* combined underdot. a mess!*/

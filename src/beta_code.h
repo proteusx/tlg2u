@@ -55,7 +55,7 @@ unsigned int greek[] = {
  * In the first group are - mutually exclusive - psili, daseia or dialytika
  * In the second group are - mutually exclusive - oxia, varia or perispomeni
  * In the third group are - mutually exclusive - ypogegrammeni, subscript dot or missing letter dot
- * as the last two are not part of fully-formed characters, will be used as combining diacritical marks
+ * The last two are not part of fully-formed characters, so they will be added as combining diacritical marks
  * The simplified form is then:
  * [ ) or ( or + ]  [ / or \ or = ]  [ | ]
  *
@@ -74,6 +74,8 @@ unsigned int greek[] = {
  * ditto with ypogegrammeni
  *
  * If zero is returned, combining diacritical marks should be generated from the accent flags.
+ *
+ * Credit and thanks to Dimitri Marinakis for this.
  */
 unsigned int alpha[] = {
 	0x03b1, 0x1f00, 0x1f01, 0x0000, 0x1f70, 0x1f02, 0x1f03, 0x0000,

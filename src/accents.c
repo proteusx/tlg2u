@@ -1,11 +1,19 @@
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  get_accents
+ *  Description:  Processes the accents. 
+ *                Stores the accents in the global variable 'accents'
+ *                and returns the number of accents found.
+ *
+ *  Variables affected: pos, accents, number_of accents              
+ * =====================================================================================
+ */
+
 #include "tlg.h"
+
 char *greek_accents = ")(+/\\=|";
 char *latin_accents = "+/\\=|";
-/* get_acents:
- * gets accents in <accents>
- * Returns: number of accents found or zero
- * Changes: accents, pos
- */
+
 int get_accents(void)
 {
 	unsigned char bufferchar;
@@ -23,7 +31,7 @@ int get_accents(void)
                                    ||  /* FIXME watch this */
           ((betastate == LATIN) && strchr(latin_accents, bufferchar)))
       {
-				store_accents;    /* macro */
+				store_accents;         /* macro. Why not in CAPITALS? */
         number_of_accents++;
       } 
       else

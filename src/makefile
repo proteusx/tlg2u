@@ -88,7 +88,7 @@ docs: $(MANPAGE)
 
 clean:
 	-$(RM) $(EXEC) $(OBJS)  
-	-$(RM) $(DOC_DIR)/tlg2u.{html,pdf,ps,txt}
+	-$(RM) $(DOC_DIR)/tlg2u.{html,pdf,ps}
 
 ctags:  
 	ctags ./*.[c,h]

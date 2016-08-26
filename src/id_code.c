@@ -10,17 +10,17 @@
  * ==========================================================================
  */
 #include "tlg.h"
-int id_level;	/* holds translated current id level as an index to ID arrays */
-int id_char;	/* holds the pointer for the ascii part of the ID arrays */
-int id_command;	/* holds the current instruction for ID handling */
-int id_process;	/* if non-zero, command must be processed */
+int id_level;	   /* holds translated current id level as an index to ID arrays */
+int id_char;	   /* holds the pointer for the ascii part of the ID arrays */
+int id_command;	 /* holds the current instruction for ID handling */
+int id_process;	 /* if non-zero, command must be processed */
 
 int id_code()
 {
 	int return_code;
 	int level_tmp;
 	int processing;
-  int high,low, char_pos;  /* used in 14 bit binary macro */
+  int high,low, char_pos;                  /* used in 14 bit binary macro */
 	unsigned char idchar, next_idchar;
 
 	return_code = 0;
@@ -30,30 +30,30 @@ int id_code()
     if (pos <= BLOCKSIZE) 
     {
       idchar = input_buffer[pos++];
-      if ((idchar < 0x80)) /* if text data - restore pointer and return*/
+      if ((idchar < 0x80))                /* if text data - restore pointer and return*/
       {
         --pos;
         processing = 0;
       }
-      else  /* start by isolating special codes and escapes */
+      else                                 /* start by isolating special codes and escapes */
       {
-        id_process =0;  /* no command yet */
-        if (idchar >= 0xF0)  /* special codes EOF, EOB, EOASCII, */
+        id_process =0;                     /* no command yet */
+        if (idchar >= 0xF0)                /* special codes EOF, EOB, EOASCII, */
         {
           switch (idchar)
           {
-            case 0xF0:    /* EOF */
-              return_code = -1;  /* return EOF */
+            case 0xF0:            /* EOF */
+              return_code = -1;   /* return EOF */
               processing = 0;
               break;
-            case 0xFE:   /* EOB advance past all NULL bytes 0x00 */
+            case 0xFE:            /* EOB advance past all NULL bytes 0x00 */
               while (pos <= BLOCKSIZE)  {pos++;}
               break;
-            case 0xFF:  /* End of ASCII string -- Test to see if exists at all */
+            case 0xFF:           /* End of ASCII string -- Test to see if exists at all */
               break;
-            case 0xF8:  /* Exception start */
+            case 0xF8:            /* Exception start */
               break;
-            case 0xF9:  /* Exception end */
+            case 0xF9:            /* Exception end */
               break;
             default:
               break;
@@ -66,24 +66,24 @@ int id_code()
           * Affected level = read next byte
           *-------------------------------------*/
         {
-          id_command = idchar & 0xF;              /* Right nibble = command */
+          id_command = idchar & 0xF;                 /* Right nibble = command */
           next_idchar = input_buffer[pos++] & 0x7f;  /* id level: read next byte */
-          if (next_idchar > 96)                   /* > 96 : descriptor data */
+          if (next_idchar > 96)                      /* > 96 : descriptor data */
           {
-            id_level = next_idchar - 97 + 26;     /* create an index offset */
-            if (id_level > 51) {id_level = 51;}   /* default to z */
+            id_level = next_idchar - 97 + 26;        /* create an index offset */
+            if (id_level > 51) {id_level = 51;}      /* default to z */
           } 
           else                                 /* author,work,work ab, author ab */
           {
-            id_level = next_idchar & 7;           /* must be 0 - 4 */
-            if (id_level == 4) {id_level = 3;}    /* adjust d level */
+            id_level = next_idchar & 7;             /* must be 0 - 4 */
+            if (id_level == 4) {id_level = 3;}      /* adjust d level */
           }
-          id_process = 1;                         /* command must be processed */
+          id_process = 1;                           /* command must be processed */
         }
         else if((idchar >= 80) && (id_process == 0)) 
         {
           /*--------------------------------------------------
-          * the rest are citation data between 0x80 -> 0xDF
+          * The rest are citation data between 0x80 -> 0xDF
           * Right nibble = command. i.e., what are the 
           * folowing bytes. e.g. number, string et.c.
           *------------------------------------------------*/
@@ -120,13 +120,13 @@ int id_code()
           {
             case 0: if (id_level == 1)
                     {
-                      icitation[1]++;  /* Work number increment. Rare case  */
+                      icitation[1]++;      /* Work number increment. Rare case  */
                       break;
                     }
                     /* if has ascii data in acitation[id_level]
                      * increase them e.g. a->b, b->c, etc.
                      * else increase numeric data in icitation[id_level]
-                     * Needed for Aristotle'w Beker pages  */
+                     * Needed for Aristotle's Beker pages  */
                   if (acitation[id_level][0] != 0) 
                   {
                     acitation[id_level][0]++;
@@ -134,7 +134,7 @@ int id_code()
                   }
                   else
                   {
-                    icitation[id_level]++;  /* increment ID data */
+                    icitation[id_level]++;          /* increment ID data */
                     break;
                   }
             case 1:
@@ -144,7 +144,7 @@ int id_code()
             case 5:
             case 6:
             case 7:
-              icitation[id_level] = id_command;  /* literal values 1 - 7 */
+              icitation[id_level] = id_command;      /* literal values 1 - 7 */
               no_chars(id_level);
               break;
             case 8:      read7bit; no_chars(id_level); break;

@@ -12,9 +12,9 @@
  int getnum(void)
 {
 	char bufferchar;
-	char modnumber[MAXNUMBERS];	/* the number string */
-	int imodnumber = 0;	/* index to modnumber */
-	int convnumber = 0;	/* converted modnumber string */
+	char modnumber[MAXNUMBERS];	                      /* the number string */
+	int imodnumber = 0;	                              /* index to modnumber */
+	int convnumber = 0;	                              /* converted modnumber string */
 	int processing = 1;
 
 	modnumber[0] = 0;
@@ -24,16 +24,16 @@
 		if ( imodnumber < MAXNUMBERS )
     {
 			bufferchar = input_buffer[pos++];
-			if (isdigit(bufferchar))                  /* if char is digit */
+			if (isdigit(bufferchar))                       /* if char is digit */
       {
-				modnumber[imodnumber++] = bufferchar;   /* put in string */
+				modnumber[imodnumber++] = bufferchar;        /* put in string */
 			} 
       else 
       {
         /* get rid of separator by not restoring the position pointer */
 				if (bufferchar != '`') --pos;   
-				modnumber[imodnumber] = 0;       /* zero terminate the string */
-				sscanf(modnumber, "%d", &convnumber);   /* convert to integer */
+				modnumber[imodnumber] = 0;                  /* zero terminate the string */
+				sscanf(modnumber, "%d", &convnumber);       /* convert to integer */
 				processing = 0;
 			}
 		} 

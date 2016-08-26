@@ -77,7 +77,7 @@ unsigned char margin[MARGINSIZE];           /* margin text */
 int  icitation[52];                  /* integer part of citation */
 char acitation[52][32];              /* Ascii part (text) of citation */
 /* ------------------------------------------------------------------ */
-int i, j, k;                              /* sandries variables */
+int i, j, k;                              /* sundry variables */
 char error_msg[253];                /* Error return message text */
 
 /*------------------------ Function prototypes ----------------------*/
