@@ -1,39 +1,49 @@
-#--------------------------------------------
-# Makefile for tlg2u
-#--------------------------------------------
 
-                                                   
- #-----------------------------------------------------#
- #                                                     #
- #     If cross compiling for windows under linux      #
- #       or compiling in an actual Micro$oft OS        #
- #     you need Mingw32-gcc and set the variable:      #
- #                    OS = windows                     #
- #    If compiling for 32 bit you also need to set:    #
- #          CC = /usr/bin/i686-pc-mingw32-gcc          #
- #                                                     #
- #-----------------------------------------------------#
+####################################################################
+#                                                                  #
+#                                                                  #
+#                        Makefile for tlg2u                        #
+#                                                                  #
+#                                                                  #
+#     This makefile can build executables for Linux or Windows     #
+#              either for 32 or 64 bit architectures               #
+#    in a system where the appropriate compilers are installed.    #
+#                                                                  #
+#                The native compiler is 64 bit GCC.                #
+#        The 32 bit GCC and Mingw32-gcc (32 and 64 bit) are        #
+#            cross compilers installed under crossdev.             #
+#                                                                  #
+#                   Set the variables by editing                   #
+#              ARCH=32 or 64 and OS=windows or linux               #
+#              or set the same from the command line:              #
+#                 e.g.   make ARCH=32 OS=windows                   #
+#                                                                  #
+#                                                                  #
+#                                                                  #
+#                                                                  #
+####################################################################
 
 
+
+
+ARCH = 64
 OS = linux
 
 ifeq ($(OS),windows) 
+ifeq ($(ARCH),64)	
 	CC = /usr/bin/x86_64-w64-mingw32-gcc
+else
+	CC = /usr/bin/i686-pc-mingw32-gcc
+endif
   EXEC = ../tlg2u.exe
 else 
+ifeq ($(ARCH),64)	
 	CC = gcc
+else
+  CC=/usr/bin/i686-pc-linux-gnu-gcc	
+endif  
 	EXEC = ../tlg2u
 endif
-
-#-----------------------------------#
-#                                   #
-#    Micro$oft does not have rm     #
-#    So change the line below to:   #
-#             RM = del              #
-#                                   #
-#-----------------------------------#
-RM = rm -f
-
 
 #---------- Flags Selection -----------#
 
@@ -48,7 +58,7 @@ CFLAGS = -Wall -march=core2 -Os -pipe -s
 # Flags for generic executable
 # CFLAGS = -Wall 
  
-#--------------------------------------#
+#-------- Compile executable ----------#
 
 COMPILE = $(CC) -c $(CFLAGS) -o $@ -c $<
 
@@ -64,7 +74,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(EXEC) docs
 	-$(RM) $(OBJS)  
 	$(info ==================================================)
-	$(info =              Compiled for $(OS)                 )
+	$(info =         Compiled for $(ARCH) bit  $(OS)         )
 	$(info ==================================================)
 
 $(EXEC): $(OBJS)
@@ -73,7 +83,9 @@ $(EXEC): $(OBJS)
 %.o: %.c 
 	$(COMPILE)
 
-# Build manpage in various formats
+#-------- Build manpage in various formats ---------#
+
+# Need groff for this
 
 DOC_DIR = ../doc
 MANPAGE = $(DOC_DIR)/tlg2u.1

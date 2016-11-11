@@ -57,13 +57,10 @@ documentation.
 * Edit the makefile depending on whether you are compiling for Linux
   or Windows, 32 bit or 64 bit.  The makefile defaults to 64bit Linux.  
 
-* Issue the command ``make`` to compile the source.  
-  This will build the documentation and  the executable ``tlg2u`` (or
-  ``tlg2u.exe`` for Windows) which can be run in situ or copied somewhere in your
-  existing search path.
-
-
-
+* Issue the command ``make`` to compile the source.  This will build the
+  documentation and  the ELF executable ``tlg2u`` (or the MZ executable
+  ``tlg2u.exe`` for Windows) which can be run in situ or copied somewhere
+  in your existing search path.
 
 
 EXAMPLES OF USAGE

@@ -14,13 +14,14 @@ int which_sigma(int nextptr)
 {
 	int scanning;
 	int nextcode;
-	/* If the next character is a hyphen, it is a medial sigma
+	/* If the next character is a hyphen or an apostrphos (single quote), 
+	 * it is a medial sigma.
 	 * Otherwise, a few characters are examined in the input buffer:
 	 * if an alphabetic character is found before we hit a space, or
 	 * other punctuation character, it is a medial sigma
 	 * otherwise it is a final sigma (there is one exception in 4085 - POS(.))
 	 */
-	if (input_buffer[pos] == '-')
+	if ((input_buffer[pos] == '-') || (input_buffer[pos] == 0x27))
 		return(SIGMEDIAL);
 	else {
 		scanning = 10;
