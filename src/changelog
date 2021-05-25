@@ -3,15 +3,15 @@ v 1.0.0 New makefile.  Uploaded to Github.
 v 0.9.4 Error messages made more meaningful.
 
 v 0.9.3 Corrected error in civ (e.g. civ0005_055) where some works did not print.
-				In civ corpus when work number changes in mid block, level b is 
-				incremented	with E0 81 instead of being reset with EF 80. 
+				In civ corpus when work number changes in mid block, level b is
+				incremented	with E0 81 instead of being reset with EF 80.
 
-v 0.9.2 Speed improvement. In beta_code.c check first if it is a vowel 
-        and only then then look for accents. 
+v 0.9.2 Speed improvement. In beta_code.c check first if it is a vowel
+        and only then then look for accents.
 
 v 0.9.1 Corrected errors in incrementing citation data when these include
 				ascii	characters. e.g in Plato (stephanus page) or Aristotle (Becker page)
-				These are now incremented correctly. 
+				These are now incremented correctly.
 				Also clear id_data after 1st pass. This caused spurious data
 				to be printed when whole files were processed from cmd line.
 
@@ -32,16 +32,16 @@ v 0.8.3 Fixed in beta_code.c accents | and + after capital.(was looking too far)
 				Also changed all (vowel + oxia) to (vowel + tonos) so that output is
 				compatible with spell checkers and polytonic keymaps.
 
-v 0.8.2 Bug fixes in escape_codes routine 
+v 0.8.2 Bug fixes in escape_codes routine
 				replaced | with $|$ because of Latex ConText error.
 
 v 0.8.1 Fixed multiple bold font error (escape_codes.c)
-				'<20' followed by '<' no longer outputs 2 \bf{ 
+				'<20' followed by '<' no longer outputs 2 \bf{
 				sequenses
 
 v 0.8 Two pass processing to estimate text width.
 			New routine handles conversion (convert.c)
-			New command line arguments: Canon run option, Block number. 
+			New command line arguments: Canon run option, Block number.
 			Improved printing.
 			Fixed latin accents.
 
@@ -54,11 +54,11 @@ v 0.6 Split each function to one file + header.
 			Use make to compile.
 			*# symbols (capital kopa, sampi, stigma) fixed.
 
-v 0.5 prints line by line to std_out and perl collects lines 
+v 0.5 prints line by line to std_out and perl collects lines
 			by executing via ` `.  No need for structures.
 
 v 0.4 output to expandable array of stuctures
 			function add_line uses malloc and realloc
 			to construct data structure.
-			Discontinued because. Too difficult to transfer 
+			Discontinued because. Too difficult to transfer
 			array of structures to perl

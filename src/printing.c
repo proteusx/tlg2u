@@ -1,8 +1,8 @@
-/*------------- print_line ------------------------------- 
- * Prints one line of text to std_out.                      
+/*------------- print_line -------------------------------
+ * Prints one line of text to std_out.
  * Prepares the output buffers text[], margin[]
  * cit_buff[], line_buff[] and para[]
- * and prints them to stdout as required by the 
+ * and prints them to stdout as required by the
  * command line parameters.
  *------------------------------------------------------- */
 #include "tlg.h"
@@ -24,11 +24,11 @@ void print_line()
     strcpy(para,"\0");
     for (i= 0; i< 5; i++)
     {
-      if (icitation[cits[i]]) 
+      if (icitation[cits[i]])
         sprintf(par_buff + strlen(par_buff), "%d", icitation[cits[i]]);
-      if (acitation[cits[i]][0]) 
+      if (acitation[cits[i]][0])
         sprintf(par_buff + strlen(par_buff), "%s", acitation[cits[i]]);
-      if (strlen(acitation[cits[i]])  || icitation[cits[i]]) 
+      if (strlen(acitation[cits[i]])  || icitation[cits[i]])
         sprintf(par_buff+strlen(par_buff), ".");
     }
     if ( strcmp(par_buff, par_tmp) != 0 )
@@ -43,9 +43,9 @@ void print_line()
   if (citations == YES)       /* If citation info is required append line nos */
   {
     strcpy(cit_buff, par_buff);
-    if (icitation[25]) 
+    if (icitation[25])
       sprintf(cit_buff + strlen(cit_buff), "%d", icitation[25]);
-    if (acitation[25][0]) 
+    if (acitation[25][0])
       sprintf(cit_buff + strlen(cit_buff), "%s", acitation[25]);
   }
 
@@ -56,17 +56,17 @@ void print_line()
       sprintf(lines_buff, "%d", icitation[25]);
   }
 
-  /* --------------------------------------------------------------- 
-   *                      print the buffers                   
+  /* ---------------------------------------------------------------
+   *                      print the buffers
    * --------------------------------------------------------------- */
 
-  /* ------------------------- 
-   * UTF Document 
+  /* -------------------------
+   * UTF Document
    * ------------------------- */
    if (document == UTF)
    {
      /* --------- print citations or paragraphs to left margin -------- */
-     if (citations == YES) 
+     if (citations == YES)
      {
        int len = strlen(cit_buff);
        printf("%s ", cit_buff);
@@ -82,7 +82,7 @@ void print_line()
      /* --------------- print main text ----------------------------- */
      /* FIXME print more lines if overlong  */
      /* In case of freak lines chop  80 chars  */
-     if(max_text > 80) max_text = 80;           
+     if(max_text > 80) max_text = 80;
      printf("%s", text);
      for(i=0; i< max_text - text_utf_count; i++) printf("%c", ' ');
 
@@ -112,20 +112,20 @@ void print_line()
      printf("\n");                              /* final line feed */
    }   /* end if UTF */
 
-  /* ------------------------- 
-   *   PDF Document 
-   * ------------------------- 
+  /* -------------------------
+   *   PDF Document
+   * -------------------------
    * Each line has the form:
-   * (cit or para) & text & lines & marginalia\\ 
+   * (cit or para) & text & lines & marginalia\\
    * Margin notes are printed in smaller size.
    * ---------------------------------------------*/
-   if (document == PDF) 
+   if (document == PDF)
    {
       if (citations)
       {
         if(strlen(cit_buff)) printf(SMALL_SCRIPT, cit_buff);
       }
-      else 
+      else
         if (paragraphs && strlen(para)) printf(SMALL_SCRIPT, para);
 
      printf("&%s", text);

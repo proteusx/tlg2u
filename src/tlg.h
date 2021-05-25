@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include "macros.h"
 
-/*------ code defines ------- */
+/*------- code defines -------- */
 #define VERSION "1.0.0"
 #define BLOCKSIZE 0x2000                    /* 8k block size, very efficient */
 #define LINESIZE 0x400                      /* 512 bytes */
@@ -39,7 +39,7 @@
 /* ----------------------- Global Variables-------------------------- */
 long int lines_count;
 int txt_handle;                              /* text file handle */
-int start_block;                             /* First block to read from */ 
+int start_block;                             /* First block to read from */
 
 char txt_file[256], idt_file[256];           /* filename strings */
 char text_dir[253];                          /* the tlg files directory */
@@ -60,11 +60,11 @@ int default_betastate, betastate;            /* default GREEK */
 int accents;                            /* encoded accents */
 int text_pos, margin_pos;               /* line & margin byte positions */
 /* utf are multibyte so these indicate the character postion in buffer */
-int margin_utf_count, text_utf_count; 
+int margin_utf_count, text_utf_count;
 /* max utf characters, calculated after first pass */
-int max_margin, max_text;          
+int max_margin, max_text;
 int margin_flag;                   /* used with test markups.
-                                    * indicate if characters go 
+                                    * indicate if characters go
                                     * to main text or margin
                                     * see escape_codes.h */
 int bold_flag;                     /* bold sequence flag, checks for
@@ -84,4 +84,4 @@ char error_msg[253];                /* Error return message text */
 int find_block (char *, int);
 void convert();
 
- 
+

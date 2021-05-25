@@ -5,7 +5,7 @@ int main (int argc, char *argv[])
 {
   if (argc < 2)
   {
-    usage_info(); 
+    usage_info();
     return(0);
   }
   setlocale(LC_ALL, "");
@@ -89,7 +89,7 @@ int main (int argc, char *argv[])
    * do not block seek
    * do not check book numbers
    * -------------------------------------------*/
-  if (argc == 1)         
+  if (argc == 1)
   {
     strcpy(txt_file, argv[0]);
     book = 0;                        /* book=0: do the whole file */
@@ -98,7 +98,7 @@ int main (int argc, char *argv[])
   /* ------------------------------------------------------------ */
  if (book != 0)  /* if no file name is given in command line */
  {
-    /* form filenames for tlg and idt */  
+    /* form filenames for tlg and idt */
     strcpy(txt_file, text_dir);
     strcat(txt_file, corpus);
     strcat(txt_file, author_code);
@@ -106,10 +106,10 @@ int main (int argc, char *argv[])
     strcat(txt_file, ".txt");
     strcat(idt_file, ".idt");
     /* --------------------------------------
-     * find the starting block for the book 
+     * find the starting block for the book
      * only if not given in command line
      * -------------------------------------*/
-    if (start_block == -1) start_block = find_block(idt_file, book) ; 
+    if (start_block == -1) start_block = find_block(idt_file, book) ;
 
     if (start_block < 0)             /* Error return if block not found */
     {
@@ -124,7 +124,7 @@ int main (int argc, char *argv[])
     sprintf(error_msg, "%s: File not found!", txt_file);
     error_return(error_msg);
   }
-  /* ----------------------------------------------------------------- 
+  /* -----------------------------------------------------------------
    *          start processing file convert and print
    * ---------------------------------------------------------------- */
   betastate = default_betastate;
@@ -132,7 +132,7 @@ int main (int argc, char *argv[])
   {
     pass = 0;
     convert();
-    printf("%d,%d,%ld\n", max_text, max_margin, lines_count); 
+    printf("%d,%d,%ld\n", max_text, max_margin, lines_count);
   }
   if ( document  == PDF ) /* only second pass and print text */
   {
@@ -141,14 +141,14 @@ int main (int argc, char *argv[])
   }
   if ( document  == UTF ) /* two passes */
   {
-    if ((max_text == -1) || (max_margin == -1)) 
+    if ((max_text == -1) || (max_margin == -1))
       /* -------------------------------
-       * first pass only if text widths 
-       * are not given in command line 
+       * first pass only if text widths
+       * are not given in command line
        * ------------------------------*/
     {
       pass = 0;        /* 1st pass calculate text sizes */
-      convert();      
+      convert();
       /* Clear citation registers ready for 2nd pass
        * need to do this in case the whole file
        * is processed from the cmd line*/

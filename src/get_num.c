@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------------------
  * getnum:
  * Collects (and removes) a non-zero number from the current input_buffer
- * position. 
+ * position.
  * Used to detemine escape beta codes
  * called from beta_code.c whenever an escape symbol is encountered.
  * Returns: an integer or zero if no number found, -1 on end of buffer
@@ -27,17 +27,17 @@
 			if (isdigit(bufferchar))                       /* if char is digit */
       {
 				modnumber[imodnumber++] = bufferchar;        /* put in string */
-			} 
-      else 
+			}
+      else
       {
         /* get rid of separator by not restoring the position pointer */
-				if (bufferchar != '`') --pos;   
+				if (bufferchar != '`') --pos;
 				modnumber[imodnumber] = 0;                  /* zero terminate the string */
 				sscanf(modnumber, "%d", &convnumber);       /* convert to integer */
 				processing = 0;
 			}
-		} 
-    else 
+		}
+    else
     {
 			convnumber = -1;
 			processing = 0;

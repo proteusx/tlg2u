@@ -7,11 +7,11 @@ the standard output.
 
 DESCRIPTION
 -----------
-       
-tlg2gu converts beta encoded classical texts, from the `Thesaurus Lingua
-Graecae <http://www.tlg.uci.edu/about/>`_ (TLG) and the Packard Humanities
+
+tlg2gu converts beta encoded classical texts, from the
+`http://stephanus.tlg.uci.edu/tlgauthors/cd.authors.php <http://www.tlg.uci.edu/about/>`_ (TLG) and the Packard Humanities
 Institute (PHI5/7) `Latin
-<http://www.indiana.edu/~letrs/text-tools/textlists/phibibliog.html>`_,
+<https://web.archive.org/web/20170623105104/http://latin.packhum.org/canon>`_,
 `epigraphical <http://epigraphy.packhum.org/>`_ and `papyrological
 <http://library.duke.edu/rubenstein/scriptorium/papyrus/texts/greek/introduction.html>`_
 corpora in CD-ROM, to utf-8 encoded text suitable for further processing by
@@ -19,14 +19,14 @@ word processor, Latex, etc., and prints the results to the standard output.
 It can convert whole files when giving a filename or single texts by
 specifying the corpus, the author id and the work id.
 
-`Beta Code <https://www.tlg.uci.edu/encoding/>`_ is an character encoding
+`Beta Code <http://stephanus.tlg.uci.edu/encoding.php>`_ is an character encoding
 for classical texts where text and formatting information onto combinations
 of ascii characters whereas indexing information is stored as binary data
-interleaved with the ascii data.    
+interleaved with the ascii data.
 
 To use tlg2u you will need to have the CD-ROMs containing the text corpora.
 As far as I know these are no longer sold but they are easily found via bit
-torrent.  
+torrent.
 
 Optionally tlg2u can emit text with Latex markups (option -p).  You need to
 add appropriate preamble and postamble before passing this output through
@@ -38,7 +38,7 @@ through which the user can select authors and works from a list.
 
 
 COMPILING
---------- 
+---------
 
 tlg2u is written in C and to compile it you need `GNU Make
 <https://www.gnu.org/software/make/>`_ and the `GCC <https://gcc.gnu.org/>`_
@@ -47,15 +47,15 @@ compiler.  If compiling for Micro$oft Windows you will need the `MinGW GCC
 <https://www.gnu.org/software/groff/>`_ is also needed to build the
 documentation.
 
-* Download the tlg2u source from GitHub: 
+* Download the tlg2u source from GitHub:
 
-.. code:: 
+.. code::
 
-  git clone https://github.com:proteusx/tlg2u 
+  git clone https://github.com:proteusx/tlg2u
   cd tlg2u/src
 
 * Edit the makefile depending on whether you are compiling for Linux
-  or Windows, 32 bit or 64 bit.  The makefile defaults to 64bit Linux.  
+  or Windows, 32 bit or 64 bit.  The makefile defaults to 64bit Linux.
 
 * Issue the command ``make`` to compile the source.  This will build the
   documentation and  the ELF executable ``tlg2u`` (or the MZ executable
@@ -71,7 +71,7 @@ The following examples assume that you have access to the CD-ROMs through the di
 ``tlg2u -a 0012 -b 001 -c tlg -d ./cdroms/tlge > Iliad.utf``
 
     Convert Homer's Iliad to utf-8 encoded text (the default). Homer
-    is found in the TLG CDROM with 
+    is found in the TLG CDROM with
     author id=0012 and the Iliad has book id=001. The path of the
     input file is ./cdroms/tlge/tlg0012.txt. The results are sent to
     the file Iliad.utf which can be viewed with Open/LibreOffice Writer or
@@ -94,7 +94,7 @@ The following examples assume that you have access to the CD-ROMs through the di
 
 ``tlg2u -L doccan2.txt > canon.txt``
 
-    Translate the TLG canon to unicode and write to file canon.txt 
+    Translate the TLG canon to unicode and write to file canon.txt
     (i.e. print the author catalogue).  You need to do this first to know
     the author and book ids.
     The -L option is set
@@ -103,7 +103,7 @@ The following examples assume that you have access to the CD-ROMs through the di
     so will be printed correctly.
 
 For more information about tlg2u's options see the man page in the
-documentation directory distributed with the source code. 
+documentation directory distributed with the source code.
 
 
 NOTE
@@ -114,7 +114,7 @@ Texts extracted with tlg2u can be edited with a polytonic typing aid like `Palam
 <http://www.vim.org/>`_ and the `polytonic Greek keymap
 <http://www.vim.org/scripts/script.php?script_id=2743>`_.
 There is also the Microsoft Greek polytonic keymap but it is
-counterintuitive and awkward to use.  
+counterintuitive and awkward to use.
 Also  have a look at the polytonic Greek `spell checker
 <http://www.vim.org/scripts/script.php?script_id=2743>`_ for Vim. This
 spell checker covers the complete vocabulary from Homeric through to
@@ -125,14 +125,14 @@ SEE ALSO
 --------
 
 
-* `tlgu <http://tlgu.carmen.gr/>`_ 
-   
-* `Diogenes <https://community.dur.ac.uk/p.j.heslin/Software/Diogenes/>`_
+* `tlgu <http://tlgu.carmen.gr/>`_
+
+* `Diogenes <https://d.iogen.es/>`_
 
 * `The Digital Classicist Tools
   <https://wiki.digitalclassicist.org/Category:Tools>`_
-  
 
 
-.. vim: set ft=rst syntax=rst spell tw=75 fo-=l lbr wrap : 
+
+.. vim: set ft=rst syntax=rst spell tw=75 fo-=l lbr wrap :
 

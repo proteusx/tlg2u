@@ -38,9 +38,9 @@
         acitation[id_level][char_pos] = 0
 
 /* Clear ASCII data of level x */
-#define no_chars(x) for (j = 0; j < 32; j++)  acitation[x][j]=0; 
+#define no_chars(x) for (j = 0; j < 32; j++)  acitation[x][j]=0;
 
-/*----------------------------------------------------------------------------- 
+/*-----------------------------------------------------------------------------
  * store_accents:
  * Stores accent character passed as a parameter to <accents>
  * 0 00 00 --- 0 00 00 no accent

@@ -5,7 +5,7 @@
 #define CARET   0x0302
 
 /* Capital special symbols
- * The rest are handled by the 
+ * The rest are handled by the
  * handle_escape_codes routine*/
 #define KOPA    0x03de
 #define STIGMA  0x03da

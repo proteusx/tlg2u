@@ -4,7 +4,7 @@ void usage_info(void)
 	printf("tlg2u: TLG/PHI beta code to Unicode (utf-8) converter.                  \n");
 	printf("tlg2u:           Version:  ");
 	printf( VERSION); printf("\n");
-	printf("tlg2u: Convert beta encoded text to utf-8 and print to standard output.\n"); 
+	printf("tlg2u: Convert beta encoded text to utf-8 and print to standard output.\n");
 	printf("tlg2u: Copyright (C) 2016 proteuss@sdf.lonestar.org\n\n");
 	printf("------------------------------------------------------------------------\n");
 	printf("tlg2u: Kudos to Dimitri Marinakis (http://tlgu.carmen.gr/)\n");
