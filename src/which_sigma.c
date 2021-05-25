@@ -1,4 +1,4 @@
-/* 
+/*
  * ===  FUNCTION  ==============================================================
  *         Name:  which_sigma
  *  Description:  Determines the appropriate sigma (medial or final)
@@ -14,7 +14,7 @@ int which_sigma(int nextptr)
 {
 	int scanning;
 	int nextcode;
-	/* If the next character is a hyphen or an apostrphos (single quote), 
+	/* If the next character is a hyphen or an apostrphos (single quote),
 	 * it is a medial sigma.
 	 * Otherwise, a few characters are examined in the input buffer:
 	 * if an alphabetic character is found before we hit a space, or

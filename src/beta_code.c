@@ -1,11 +1,11 @@
-/* 
+/*
  * ===  FUNCTION  ============================================================
  *
  *         Name:  beta_code
  *  Description:  Converts Beta Code characters read from input_buffer
  *                to utf8 bytes and sends them to the output
- *                changes: pos, text[], margin[], text_pos, margin_pos, 
- *                         
+ *                changes: pos, text[], margin[], text_pos, margin_pos,
+ *
  * ===========================================================================
  */
 #include "tlg.h"
@@ -33,10 +33,10 @@ int beta_code()
   int esc_num = 0;
   text_pos = margin_pos = 0;
   /* start Tex bold if continued from previous line */
-  if((document == PDF) && (bold_flag)) utf_string(BOLD);  
+  if((document == PDF) && (bold_flag)) utf_string(BOLD);
   while (processing)
   {
-    if (pos <= BLOCKSIZE) 
+    if (pos <= BLOCKSIZE)
     {
       betachar = input_buffer[pos++];
       if ((betachar > 0x7F)) /* if id data - restore pointer and return*/
@@ -56,25 +56,25 @@ int beta_code()
           /*------------------------------------------------------------
            *  Greek Capitals
            *------------------------------------------------------------*/
-          if (betastate == GREEK && betachar == '*')  
+          if (betastate == GREEK && betachar == '*')
           {
              /* -------------------------------------------
-             * Ypogegrammeni or dialytika come after 
+             * Ypogegrammeni or dialytika come after
              * the capital letter
              * If any found, swap its position with the letter
-             * so that all accents are  before the letter so 
+             * so that all accents are  before the letter so
              * that get_accents() can find them.
              * -------------------------------------------*/
-            for(i=0; i <= 2; i++) 
+            for(i=0; i <= 2; i++)
             {
                 /* ignore any accents after * and before letter */
               if(strchr(before_accents, input_buffer[pos + i])) { continue;}
               /* Look for A,H,W,I,U folowed by | or + */
               else if(
-                        strchr(hypo_vowels, input_buffer[pos + i]) 
+                        strchr(hypo_vowels, input_buffer[pos + i])
                                           &&
                         (          /* if next char  is | or +  */
-                            (input_buffer[pos + i + 1] == 0x7c) 
+                            (input_buffer[pos + i + 1] == 0x7c)
                                           ||
                             (input_buffer[pos + i + 1] == 0x2b)
                         )
@@ -84,15 +84,15 @@ int beta_code()
                         input_buffer[pos + i + 1] = input_buffer[pos + i];
                         input_buffer[pos + i] = char_tmp;
                         break;           /* stop searching */
-                      } 
+                      }
                     else {break;} /* not relevant, stop searching */
             }/* end for */
             no_of_accents = get_accents();  /* For caps accents come before the letter */
             betachar = input_buffer[pos++];
             /* Don't waste time unless it is a vowel and has accents */
-            if ( strchr(vowels, betachar) && no_of_accents ) 
+            if ( strchr(vowels, betachar) && no_of_accents )
             {
-              switch (betachar) 
+              switch (betachar)
               {
                 case 'A': outchar = Alpha[accents]; break;
                 case 'E': outchar = Epsilon[accents]; break;
@@ -105,12 +105,12 @@ int beta_code()
                 default: break;
               } /* end switch */
             } /* not accented capital vowel */
-            else 
+            else
             {
               if (isalpha(betachar))            /* Other Greek capital */
               {
                 outchar = greek[betachar];
-              } 
+              }
               else                              /* '*' not followed by letter*/
               {
                 if (betachar == '#')  /* Capital special symbols. eg capital koppa */
@@ -133,12 +133,12 @@ int beta_code()
               } /* end else not a letter */
             } /* end else not accented cap */
           }
-          else  /* not a  capital */           
+          else  /* not a  capital */
           /*------------------------------------------------------------
            *  i.e. Greek Lower Case or Latin
            *------------------------------------------------------------*/
           {
-            if ( betastate == GREEK && isalpha( betachar)) 
+            if ( betastate == GREEK && isalpha( betachar))
             {
               if (betachar == 'S') /* sort out the sigmas */
               {
@@ -151,21 +151,21 @@ int beta_code()
                   /* S3 (lunate sigma) is not used.
                    * EDIT: It is used in Galenus 0057_91
                    * handle it as an ordinary sigma
-                   * and let which_sigma() decide if it meant 
+                   * and let which_sigma() decide if it meant
                    * to be medial of final
-                   */          
+                   */
                   case 3:   outchar = which_sigma(pos); break;
                   default:  outchar = SIGMEDIAL;
                 }
               }
               else                              /* other small greek */
               {
-                /* accents follow letter. 
-                 * Do not waste time unless 
+                /* accents follow letter.
+                 * Do not waste time unless
                  * it is a vowel with accents */
-                if ( strchr(vowels, betachar) && get_accents() ) 
+                if ( strchr(vowels, betachar) && get_accents() )
                 {
-                  switch (betachar) 
+                  switch (betachar)
                   {
                     case 'A': outchar = alpha[accents]; break;
                     case 'E': outchar = epsilon[accents]; break;
@@ -183,17 +183,17 @@ int beta_code()
                 }
               } /* end else other lc greek */
             } /* end if isalpha GREEK */
-            else if ( (betastate == LATIN) && isalpha(betachar) && get_accents()) 
+            else if ( (betastate == LATIN) && isalpha(betachar) && get_accents())
               /*  not a greek letter */
             {
               /*----------------------------------------------------
               *   Latin Only
               *----------------------------------------------------*/
-                outchar = betachar; 
-                /* There are some accented latin 
+                outchar = betachar;
+                /* There are some accented latin
                 * characters. Use combining accents for them.
                 * Emmit character and combining accent directly
-                * and then sent a 0x0 to the programme to prevent 
+                * and then sent a 0x0 to the programme to prevent
                 * double characters.
                 * */
                 output_utf(outchar);
@@ -203,7 +203,7 @@ int beta_code()
                   case 0x04:  output_utf(GRAVE);  break;
                   case 0x08:  output_utf(ACUTE);  break;
                   case 0x0c:  output_utf(CARET);  break;
-                  default:    break;            
+                  default:    break;
                 }
                 outchar = 0;   /* Already sent, so discart character */
             } /* end if accented LATIN  */
@@ -217,8 +217,8 @@ int beta_code()
 
                   /* This apostrofos is recomended by Beta Code manual
                    * but is incopadible with vim keymap, spell checkers
-                   * and kadmos 
-                   * case '\'': outchar = 0x2019;break;      
+                   * and kadmos
+                   * case '\'': outchar = 0x2019;break;
                    * Better use coronis = 0x1fbd
                   */
                   case '\'': outchar = 0x1fbd;break;      /* apostrofos */
@@ -241,8 +241,8 @@ int beta_code()
       processing = 0;
     }
   }  /* end while */
-  /* Terminate unfinished LaTex bold sequence. 
+  /* Terminate unfinished LaTex bold sequence.
    * The next line will begin with \textbf{  */
-  if((document == PDF) && (bold_flag)) output_utf('}');  
+  if((document == PDF) && (bold_flag)) output_utf('}');
   return return_code;
 }

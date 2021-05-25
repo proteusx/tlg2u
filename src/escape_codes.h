@@ -1,5 +1,5 @@
 /* -----------------------
- *    escape_codes.h 
+ *    escape_codes.h
  * ----------------------*/
 
 unsigned long xucode;    /* Temp unicode symbol holder */
@@ -12,7 +12,7 @@ unsigned long xucode;    /* Temp unicode symbol holder */
 /* Punctuation codes (%) 0 - 188 */
 /*FIXME check or find symbols for %47, (%50 - %81), %98, %105, %145, %157, %171
  * %19 en-dash 0x2013 used also in the canon. best to use 0x002d */
-/* returns '%' 0x025  if not exists 
+/* returns '%' 0x025  if not exists
  * FIXME must escape '% = 0x0025' for it is a comment in TEX */
 #define MAX_PUNCTUATION 188
 unsigned int punctuation[] = {
@@ -49,8 +49,8 @@ unsigned int punctuation[] = {
 #define MAX_TEXT_SYMBOLS 1533
 unsigned int text_symbols[] = {
 /*
-*   0        1         2        3        4       5         6       7        8        9  
-*/                                                                                
+*   0        1         2        3        4       5         6       7        8        9
+*/
   0X0374,  0X03DF,  0X03DB,  0X03D9,  0X03DE,  0X03E1,  0X2E0F,  0X0023,  0X2E10,  0X0301,
   0X03FD,  0X03FF,  0X2014,  0X203B,  0X2E16,  0X003E,  0X03FE,  0X002F,  0X003C,  0X0300,
  0X10175, 0X10176,  0X0375,  0X03D8, 0X10176, 0X10176,  0X2E0F,  0X221A,  0X0023,  0X00B7,
@@ -289,14 +289,14 @@ unsigned int bracket_close_symbol[] = {
 	};
 
 /* Quasi-Brackets (< ) 0 - 100  are text formating codes.
- *  e.g. sub/super script text, under/overline text, etc. 
- *  
- * FIXME 
+ *  e.g. sub/super script text, under/overline text, etc.
+ *
+ * FIXME
  * For the time being enclose such text in angle brackets
  * and later, if needed, apply formating manually.
  * Formating should be done by LaTeX. Maybe
  * leave them as they are and handle externally by perl.
- * 
+ *
  */
 #define MAX_QUASI_BRACKET 101
 unsigned int quasi_bracket_open[MAX_QUASI_BRACKET];
@@ -330,7 +330,7 @@ unsigned int quasi_bracket_close_symbol[] = {
 #define MAX_TEXT_MARKUP 95
 /* int margin_flag = 0;   Defined in tlg.h start with the margin flag reset */
 /* -------------------------------------------------------------------------------
- * Texttual Mark-Up ({) 0 - 94 
+ * Texttual Mark-Up ({) 0 - 94
  * The table below is not of unicode chars
  * each entry indicates what to do for each {n code:
  * 0 = enclose text in {}
@@ -338,7 +338,7 @@ unsigned int quasi_bracket_close_symbol[] = {
  * 2 = Title: render in Bold font
  * 3 = Stage direction, speaker designation etc.  {bold text}
  * -------------------------------------------------------------------------------*/
-unsigned int text_markup[] = 
+unsigned int text_markup[] =
 {
 	0x0003, 0x0002, 0x0001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,

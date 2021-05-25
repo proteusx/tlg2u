@@ -1,11 +1,11 @@
-/* 
+/*
  * ===  FUNCTION  ======================================================================
  *         Name:  get_accents
- *  Description:  Processes the accents. 
+ *  Description:  Processes the accents.
  *                Stores the accents in the global variable 'accents'
  *                and returns the number of accents found.
  *
- *  Variables affected: pos, accents, number_of accents              
+ *  Variables affected: pos, accents, number_of accents
  * =====================================================================================
  */
 
@@ -22,9 +22,9 @@ int get_accents(void)
 
 	accents = 0;
 
-	while (processing) 
+	while (processing)
   {
-		if (pos <= BLOCKSIZE) 
+		if (pos <= BLOCKSIZE)
     {
 			bufferchar = input_buffer[pos++];
       if (((betastate == GREEK) && strchr(greek_accents, bufferchar))
@@ -33,14 +33,14 @@ int get_accents(void)
       {
 				store_accents;         /* macro. Why not in CAPITALS? */
         number_of_accents++;
-      } 
+      }
       else
       {
         --pos;
         processing = 0;
       }
 		}
-    else 
+    else
     {
 			processing = 0;
 		}

@@ -1,6 +1,6 @@
-/* ------------------------------------------------------------------ 
- *   Main text conversion function.              
- *   Needs the txt_file to be open and 
+/* ------------------------------------------------------------------
+ *   Main text conversion function.
+ *   Needs the txt_file to be open and
  *   the file handle to be valid
  * ------------------------------------------------------------------ */
 #include "convert.h"
@@ -14,13 +14,13 @@ void convert()
   unsigned char byte;                           /* processed data byte */
   int id_err, beta_err;                         /* error returns */
   id_err = beta_err = 0;
-  margin_flag = 0;                   /* start sending text to main 
+  margin_flag = 0;                   /* start sending text to main
                                       * 0= text goes to main line,
-                                      * 1 text goes to margin 
-                                      * FIXME What if marginalia 
+                                      * 1 text goes to margin
+                                      * FIXME What if marginalia
                                       * spans more than one line?  */
 
-  /* Seek the first byte of the starting block of the .txt input file  */         
+  /* Seek the first byte of the starting block of the .txt input file  */
   int seek_err = lseek(txt_handle, start_block * 0x2000, SEEK_SET);
   if (seek_err < 0 ) error_return("Seek error. ");
   more_blocks = 1;
@@ -47,12 +47,12 @@ void convert()
         /* Retrieve current work id (level b). Converted to int in id_code.c */
         book_tmp = icitation[1];
         /* book == 0 means all books  */
-        if ((book == 0) || ( book_tmp == book) ) 
-        { 
+        if ((book == 0) || ( book_tmp == book) )
+        {
           margin_utf_count = text_utf_count = 0;
           --pos;
           beta_err = beta_code();              /* FIXME error return???  */
-          if (pass) 
+          if (pass)
           {
             print_line();                      /* print line if second pass or pdf */
           }
@@ -60,7 +60,7 @@ void convert()
         }
         else if (book_tmp > book) more_blocks = 0; /* no more blocks or book not found */
       }  /* end beta text line */
-      betastate = default_betastate; 
+      betastate = default_betastate;
     }  /* end pos < count. finished with buffer for this block */
   } /* end while blocks */
 } /* end function convert */

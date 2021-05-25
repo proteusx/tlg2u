@@ -1,12 +1,12 @@
 
-/* 
+/*
  * ===  FUNCTION  ===========================================================
  *         Name:  id_code
- *  Description:  Extract id data from input_buffer and 
+ *  Description:  Extract id data from input_buffer and
  *                fill in appropriate entries in citations arrays
  *                affected variables:  icitation[], acitation[], pos
  *                returns -1 EOF, 0 normal return, -2 change book
- *                
+ *
  * ==========================================================================
  */
 #include "tlg.h"
@@ -25,9 +25,9 @@ int id_code()
 
 	return_code = 0;
   processing = 1;
-	while (processing) 
+	while (processing)
   {
-    if (pos <= BLOCKSIZE) 
+    if (pos <= BLOCKSIZE)
     {
       idchar = input_buffer[pos++];
       if ((idchar < 0x80))                /* if text data - restore pointer and return*/
@@ -59,10 +59,10 @@ int id_code()
               break;
           }
         }
-        else if (idchar >= 0xE0) 
-          /*------------------------------------- 
-          * 0xE0, 0xE1, 0xE2,..0xE7 = escape codes 
-          * Right nible = command 
+        else if (idchar >= 0xE0)
+          /*-------------------------------------
+          * 0xE0, 0xE1, 0xE2,..0xE7 = escape codes
+          * Right nible = command
           * Affected level = read next byte
           *-------------------------------------*/
         {
@@ -72,7 +72,7 @@ int id_code()
           {
             id_level = next_idchar - 97 + 26;        /* create an index offset */
             if (id_level > 51) {id_level = 51;}      /* default to z */
-          } 
+          }
           else                                 /* author,work,work ab, author ab */
           {
             id_level = next_idchar & 7;             /* must be 0 - 4 */
@@ -80,22 +80,22 @@ int id_code()
           }
           id_process = 1;                           /* command must be processed */
         }
-        else if((idchar >= 80) && (id_process == 0)) 
+        else if((idchar >= 80) && (id_process == 0))
         {
           /*--------------------------------------------------
           * The rest are citation data between 0x80 -> 0xDF
-          * Right nibble = command. i.e., what are the 
+          * Right nibble = command. i.e., what are the
           * folowing bytes. e.g. number, string et.c.
           *------------------------------------------------*/
 
-          id_command = idchar & 0xF; 
+          id_command = idchar & 0xF;
           level_tmp = (idchar >> 4) & 0x7;            /* left nibble = level */
           switch (level_tmp)
           {
-            /*------------------------------------------------------ 
+            /*------------------------------------------------------
             * offset levels to the proper place in citation array *
             * 0->25, 1->24, 2->23, 3->22, 4->21, 5->13
-            *-----------------------------------------------------*/ 
+            *-----------------------------------------------------*/
             case 0: /* z */
             case 1: /* y */
             case 2: /* x */
@@ -113,7 +113,7 @@ int id_code()
         }  /* end of if ... else if.. on idchar */
 
         /*----------------------------------------------------------------------
-        * now process command and put level data in array 
+        * now process command and put level data in array
         *-----------------------------------------------------------------------*/
         if (id_process) {
           switch (id_command)
@@ -127,7 +127,7 @@ int id_code()
                      * increase them e.g. a->b, b->c, etc.
                      * else increase numeric data in icitation[id_level]
                      * Needed for Aristotle's Beker pages  */
-                  if (acitation[id_level][0] != 0) 
+                  if (acitation[id_level][0] != 0)
                   {
                     acitation[id_level][0]++;
                     break;
@@ -160,14 +160,14 @@ int id_code()
                           * work number if this changes in midblock   */
                          if (id_level == 1)
                             sscanf(acitation[1], "%d", &icitation[1]);
-                         else 
-                           icitation[id_level] = 0; 
+                         else
+                           icitation[id_level] = 0;
                          break;
             default:
               printf("Unknown id_command: %x,  pos %x\n", id_command, pos);
               break;
           }  /* End switch on id_command */
-          
+
           /* Adjust lower citation levels */
           switch (id_level)
           {
