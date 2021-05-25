@@ -9,8 +9,7 @@ DESCRIPTION
 -----------
 
 tlg2gu converts beta encoded classical texts, from the
-`http://stephanus.tlg.uci.edu/tlgauthors/cd.authors.php <http://www.tlg.uci.edu/about/>`_ (TLG) and the Packard Humanities
-Institute (PHI5/7) `Latin
+`Thesaurus Linguae Graecae <http://stephanus.tlg.uci.edu/tlgauthors/cd.authors.php>`_ (TLG) and the Packard Humanities Institute (PHI5/7) `Latin
 <https://web.archive.org/web/20170623105104/http://latin.packhum.org/canon>`_,
 `epigraphical <http://epigraphy.packhum.org/>`_ and `papyrological
 <http://library.duke.edu/rubenstein/scriptorium/papyrus/texts/greek/introduction.html>`_
