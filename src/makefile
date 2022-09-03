@@ -62,13 +62,14 @@ DEP = $(SRCS:%.c=%.d)
 
 # Optimized for Intel Core 2
 # CFLAGS = -Wall -Wextra -march=core2 -O2 -pipe -s
-CFLAGS = -march=core2 -O2 -pipe -s
+# CFLAGS = -march=core2 -O2 -pipe -s
 
 # Flags for debugging
 # CFLAGS = -Wall -g
 
 # Flags for generic executable
-# CFLAGS = -Wall
+# -fcommon to compile with >=GCC-10
+CFLAGS = -Wall -pipe -s -fcommon
 #---------------------------------------#
 
 # Preprocessor Flags.  See 'gcc preprocessor options'

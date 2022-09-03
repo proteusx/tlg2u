@@ -1,9 +1,14 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/mnt/library/tlg/Tlg_readers/proteus/tlg2unicode/tlg2u.github/src/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	//
+!_TAG_PROGRAM_VERSION	5.9.0	//
 ACCENT	./beta_code.h	/^#define ACCENT /;"	d
 ACUTE	./beta_code.h	/^#define ACUTE /;"	d
 ARKOPA	./beta_code.h	/^#define ARKOPA /;"	d
@@ -67,7 +72,7 @@ accents	./tlg.h	/^int accents;                            \/* encoded accents *\
 acitation	./tlg.h	/^char acitation[52][32];              \/* Ascii part (text) of citation *\/$/;"	v	typeref:typename:char[52][32]
 alpha	./beta_code.h	/^unsigned int alpha[] = {$/;"	v	typeref:typename:unsigned int[]
 author_code	./tlg.h	/^char author_code[5];                         \/* author code number string *\/$/;"	v	typeref:typename:char[5]
-before_accents	./beta_code.c	/^char *before_accents = ")(\/\\\\=";$/;"	v	typeref:typename:char *
+before_accents	./beta_code.c	/^char *before_accents = ")(\/\\\\=+|";$/;"	v	typeref:typename:char *
 beta_code	./beta_code.c	/^int beta_code()$/;"	f	typeref:typename:int
 betastate	./tlg.h	/^int default_betastate, betastate;            \/* default GREEK *\/$/;"	v	typeref:typename:int
 bold_flag	./tlg.h	/^int bold_flag;                     \/* bold sequence flag, checks for$/;"	v	typeref:typename:int
@@ -92,7 +97,6 @@ getnum	./get_num.c	/^ int getnum(void)$/;"	f	typeref:typename:int
 greek	./beta_code.h	/^unsigned int greek[] = {$/;"	v	typeref:typename:unsigned int[]
 greek_accents	./accents.c	/^char *greek_accents = ")(+\/\\\\=|";$/;"	v	typeref:typename:char *
 handle_escape_codes	./escape_codes.c	/^void handle_escape_codes(unsigned char beta, int number)$/;"	f	typeref:typename:void
-hypo_vowels	./beta_code.c	/^char *hypo_vowels ="AHWUI";   \/* vowels that take ypogegrammeni or dialytika *\/$/;"	v	typeref:typename:char *
 i	./tlg.h	/^int i, j, k;                              \/* sundry variables *\/$/;"	v	typeref:typename:int
 icitation	./tlg.h	/^int  icitation[52];                  \/* integer part of citation *\/$/;"	v	typeref:typename:int[52]
 id_char	./id_code.c	/^int id_char;	   \/* holds the pointer for the ascii part of the ID arrays *\/$/;"	v	typeref:typename:int
@@ -100,7 +104,7 @@ id_code	./id_code.c	/^int id_code()$/;"	f	typeref:typename:int
 id_command	./id_code.c	/^int id_command;	 \/* holds the current instruction for ID handling *\/$/;"	v	typeref:typename:int
 id_level	./id_code.c	/^int id_level;	   \/* holds translated current id level as an index to ID arrays *\/$/;"	v	typeref:typename:int
 id_process	./id_code.c	/^int id_process;	 \/* if non-zero, command must be processed *\/$/;"	v	typeref:typename:int
-idt_file	./tlg.h	/^char txt_file[256], idt_file[256];           \/* filename strings *\/$/;"	v	typeref:typename:char[256][256]
+idt_file	./tlg.h	/^char txt_file[256], idt_file[256];           \/* filename strings *\/$/;"	v	typeref:typename:char[256]
 input_buffer	./tlg.h	/^unsigned char input_buffer[BLOCKSIZE];       \/* 8k input data buffer*\/$/;"	v	typeref:typename:unsigned char[]
 iota	./beta_code.h	/^unsigned int iota[] = {$/;"	v	typeref:typename:unsigned int[]
 j	./tlg.h	/^int i, j, k;                              \/* sundry variables *\/$/;"	v	typeref:typename:int
@@ -112,10 +116,10 @@ main	./tlg.c	/^int main (int argc, char *argv[])$/;"	f	typeref:typename:int
 margin	./tlg.h	/^unsigned char margin[MARGINSIZE];           \/* margin text *\/$/;"	v	typeref:typename:unsigned char[]
 margin_flag	./tlg.h	/^int margin_flag;                   \/* used with test markups.$/;"	v	typeref:typename:int
 margin_pos	./tlg.h	/^int text_pos, margin_pos;               \/* line & margin byte positions *\/$/;"	v	typeref:typename:int
-margin_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count; $/;"	v	typeref:typename:int
+margin_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count;$/;"	v	typeref:typename:int
 marginalia	./tlg.h	/^int marginalia;                              \/* emit marginalia *\/$/;"	v	typeref:typename:int
-max_margin	./tlg.h	/^int max_margin, max_text;          $/;"	v	typeref:typename:int
-max_text	./tlg.h	/^int max_margin, max_text;          $/;"	v	typeref:typename:int
+max_margin	./tlg.h	/^int max_margin, max_text;$/;"	v	typeref:typename:int
+max_text	./tlg.h	/^int max_margin, max_text;$/;"	v	typeref:typename:int
 no_chars	./macros.h	/^#define no_chars(/;"	d
 omega	./beta_code.h	/^unsigned int omega[] = {$/;"	v	typeref:typename:unsigned int[]
 omicron	./beta_code.h	/^unsigned int omicron[] = {$/;"	v	typeref:typename:unsigned int[]
@@ -138,14 +142,14 @@ read7bit	./macros.h	/^#define read7bit /;"	d
 read_char	./macros.h	/^#define read_char /;"	d
 read_string	./macros.h	/^#define read_string /;"	d
 rho	./beta_code.h	/^unsigned int rho[] = {$/;"	v	typeref:typename:unsigned int[]
-start_block	./tlg.h	/^int start_block;                             \/* First block to read from *\/ $/;"	v	typeref:typename:int
+start_block	./tlg.h	/^int start_block;                             \/* First block to read from *\/$/;"	v	typeref:typename:int
 store_accents	./macros.h	/^#define store_accents /;"	d
 text	./tlg.h	/^unsigned char text[LINESIZE];               \/* main text *\/$/;"	v	typeref:typename:unsigned char[]
 text_dir	./tlg.h	/^char text_dir[253];                          \/* the tlg files directory *\/$/;"	v	typeref:typename:char[253]
-text_markup	./escape_codes.h	/^unsigned int text_markup[] = $/;"	v	typeref:typename:unsigned int[]
+text_markup	./escape_codes.h	/^unsigned int text_markup[] =$/;"	v	typeref:typename:unsigned int[]
 text_pos	./tlg.h	/^int text_pos, margin_pos;               \/* line & margin byte positions *\/$/;"	v	typeref:typename:int
 text_symbols	./escape_codes.h	/^unsigned int text_symbols[] = {$/;"	v	typeref:typename:unsigned int[]
-text_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count; $/;"	v	typeref:typename:int
+text_utf_count	./tlg.h	/^int margin_utf_count, text_utf_count;$/;"	v	typeref:typename:int
 txt_file	./tlg.h	/^char txt_file[256], idt_file[256];           \/* filename strings *\/$/;"	v	typeref:typename:char[256]
 txt_handle	./tlg.h	/^int txt_handle;                              \/* text file handle *\/$/;"	v	typeref:typename:int
 usage_info	./usage_info.h	/^void usage_info(void)$/;"	f	typeref:typename:void

@@ -78,7 +78,7 @@ int  icitation[52];                  /* integer part of citation */
 char acitation[52][32];              /* Ascii part (text) of citation */
 /* ------------------------------------------------------------------ */
 int i, j, k;                              /* sundry variables */
-char error_msg[253];                /* Error return message text */
+char error_msg[512];                /* Error return message text */
 
 /*------------------------ Function prototypes ----------------------*/
 int find_block (char *, int);

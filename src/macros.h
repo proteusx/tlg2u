@@ -8,7 +8,7 @@
  * send a string to output buffer
  *-------------------------------------*/
 #define utf_string(s) \
-  for(j =0 ; j < strlen(s); j++) output_utf(s[j])
+  for(j =0 ; j < (int)strlen(s); j++) output_utf(s[j])
 
 /*--------------------------------------
  * used in id-code routine

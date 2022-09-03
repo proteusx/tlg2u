@@ -169,7 +169,7 @@ int id_code()
           }  /* End switch on id_command */
 
           /* Adjust lower citation levels */
-          switch (id_level)
+          switch (id_level)  /* Fallthrough is intentional */
           {
             case 21:  icitation[22] = 1; no_chars(22);
             case 22:  icitation[23] = 1; no_chars(23);

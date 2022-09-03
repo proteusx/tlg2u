@@ -18,9 +18,8 @@ void output_utf(int);
 void handle_escape_codes( unsigned char, int);
 /* ------------------------------------------------------------------ */
 char *vowels = "AEHIOUWR";                         /* Rho is a vowel! */
-char *hypo_vowels ="AHWUI";   /* vowels that take ypogegrammeni or dialytika */
 char *escape_codes = "$&%\"@#^[]<>{}";
-char *before_accents = ")(/\\=";
+char *before_accents = ")(/\\=+|";
 char char_tmp;
 /* ------------------------------------------------------------------ */
 int beta_code()
@@ -59,34 +58,37 @@ int beta_code()
           if (betastate == GREEK && betachar == '*')
           {
              /* -------------------------------------------
-             * Ypogegrammeni or dialytika come after
-             * the capital letter
-             * If any found, swap its position with the letter
-             * so that all accents are  before the letter so
+             * Normally the accents follow the letter.
+             * In capital letters accents come before the
+             * letter.  e.g. *)/A. However Ypogegrammeni and
+             * dialytika come after the capital letter.
+             * Also there are some documents e.g. tlg2602
+             * where the accents are mistakenly appear after
+             * the capital letters. This loop detect any misplaced
+             * accents and transposes them before the capital
+             * letter so that all accents are before the letter so
              * that get_accents() can find them.
              * -------------------------------------------*/
-            for(i=0; i <= 2; i++)
+            for(j=0; j<=2; j++) /* Repeat 3 times to catch and swap more than 1 accents */
             {
-                /* ignore any accents after * and before letter */
-              if(strchr(before_accents, input_buffer[pos + i])) { continue;}
-              /* Look for A,H,W,I,U folowed by | or + */
-              else if(
-                        strchr(hypo_vowels, input_buffer[pos + i])
-                                          &&
-                        (          /* if next char  is | or +  */
-                            (input_buffer[pos + i + 1] == 0x7c)
-                                          ||
-                            (input_buffer[pos + i + 1] == 0x2b)
+                for(i=0; i <= 2; i++)
+                {
+                    /* ignore any accents after * and before letter */
+                  if(strchr(before_accents, input_buffer[pos + i])) { continue;}
+                  else if(      /* Look a vowel  followed by accent */
+                            strchr(vowels, input_buffer[pos + i])
+                                              &&
+                            strchr(before_accents, input_buffer[pos + i + 1])
                         )
-                      )
-                      {                  /* swap if found */
-                        char_tmp = input_buffer[pos + i + 1];
-                        input_buffer[pos + i + 1] = input_buffer[pos + i];
-                        input_buffer[pos + i] = char_tmp;
-                        break;           /* stop searching */
-                      }
-                    else {break;} /* not relevant, stop searching */
-            }/* end for */
+                  {
+                    char_tmp = input_buffer[pos + i + 1];           /* swap if found */
+                    input_buffer[pos + i + 1] = input_buffer[pos + i];
+                    input_buffer[pos + i] = char_tmp;
+                    break;                                          /* stop searching */
+                  }
+                  else {break;} /* not relevant, stop searching */
+                } /* end for i */
+            } /* end for j */
             no_of_accents = get_accents();  /* For caps accents come before the letter */
             betachar = input_buffer[pos++];
             /* Don't waste time unless it is a vowel and has accents */
