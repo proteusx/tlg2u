@@ -1,3 +1,7 @@
+====
+Repository moved to Codeberg
+====
+https://codeberg.org/proteusx/tlg2u
 
 =====
 TLG2U
